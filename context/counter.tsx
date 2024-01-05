@@ -9,7 +9,6 @@ const initialState: CounterType = {
 };
 
 const reducer = (state: CounterType, action: ActionType) => {
-  console.log("state", state, "action", action);
   switch (action.type) {
     case "INCREMENT":
       return { ...state, page: state.page + 1 };
