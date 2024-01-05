@@ -2,13 +2,13 @@
 
 import React, { Dispatch, createContext, useReducer } from "react";
 
-import { StateType, ActionType } from "../types";
+import { CounterType, ActionType } from "../types";
 
-const initialState: StateType = {
+const initialState: CounterType = {
   page: 1,
 };
 
-const reducer = (state: StateType, action: ActionType) => {
+const reducer = (state: CounterType, action: ActionType) => {
   console.log("state", state, "action", action);
   switch (action.type) {
     case "INCREMENT":
@@ -21,7 +21,7 @@ const reducer = (state: StateType, action: ActionType) => {
 };
 
 export const CounterContext = createContext<{
-  state: StateType;
+  state: CounterType;
   dispatch: Dispatch<ActionType>;
 }>({ state: initialState, dispatch: () => null });
 

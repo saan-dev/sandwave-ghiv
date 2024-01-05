@@ -21,10 +21,17 @@ export interface Issue {
   html_url?: string;
 }
 
-export type StateType = {
+export type CounterType = {
   page: number;
 };
 
 export type ActionType = {
   type: string;
 };
+
+export interface ButtonProps {
+  isDisabled?: boolean;
+  btnType?: "button" | "submit";
+  classes?: string;
+  title: string;
+}

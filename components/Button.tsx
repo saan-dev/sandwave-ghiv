@@ -1,14 +1,15 @@
-import React from "react";
+"use client";
 
-const Button = () => {
-  return (
-    <button
-      type="submit"
-      className={`bg-blue-500 hover:bg-blue-700 rounded-md py-2 px-7 cursor-pointer text-center bg-black text-white font-bold`}
-    >
-      Search
-    </button>
-  );
-};
+import { ButtonProps } from "@/types";
+
+const Button = ({ isDisabled, btnType, classes, title }: ButtonProps) => (
+  <button
+    disabled={isDisabled}
+    type={btnType || "submit"}
+    className={`${classes}`}
+  >
+    {title}
+  </button>
+);
 
 export default Button;

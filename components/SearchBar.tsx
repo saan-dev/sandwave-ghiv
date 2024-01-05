@@ -17,15 +17,10 @@ const SearchBar = () => {
   const onSubmit: SubmitHandler<IFormInput> = () => handleSearch();
   const [org, setOrg] = useState("");
   const [repo, setRepo] = useState("");
-  const [, setMessage] = useState(false);
 
   const router = useRouter();
 
   const handleSearch = () => {
-    if (org.trim() === "" || repo.trim() === "") {
-      setMessage(true);
-    }
-    setMessage(false);
     updateSearchParams(org.toLowerCase(), repo.toLowerCase());
   };
 
@@ -125,7 +120,10 @@ const SearchBar = () => {
           )}
         </div>
         <div className="flex-0">
-          <Button />
+          <Button
+            title="Search"
+            classes="bg-blue-500 hover:bg-blue-700 rounded-md py-2 px-7 cursor-pointer text-center bg-black text-white font-bold"
+          />
         </div>
       </div>
     </form>
