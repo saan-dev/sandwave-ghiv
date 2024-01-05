@@ -14,6 +14,7 @@ const Issues = ({ data }: IssuesProps) => {
   const [issues, setIssues] = useState<Issue[]>([]);
   const [prevData, setPrevData] = useState<Issue[]>([]);
   const [isBottom, setIsBottom] = useState(false);
+  const [noIssues, setNoIssues] = useState(false);
 
   const handleSort = (value: string) => {
     if (value === "asc") {
@@ -24,9 +25,20 @@ const Issues = ({ data }: IssuesProps) => {
   };
 
   useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const org = searchParams.get("org");
+    const repo = searchParams.get("repo");
+
     if (data.length < 1) {
       setIssues([]);
+
+      console.log(org, repo, "org, repo");
+      if (org && org.length > 0 && repo && repo.length > 0) {
+        setNoIssues(true);
+      }
       return;
+    } else {
+      setNoIssues(false);
     }
 
     const isPrevDataEmpty = prevData.length === 0;
@@ -89,7 +101,7 @@ const Issues = ({ data }: IssuesProps) => {
 
   return (
     <>
-      {data ? (
+      {!noIssues ? (
         <div className="flex md:block">
           <div className="mt-4">
             <div>
@@ -136,8 +148,9 @@ const Issues = ({ data }: IssuesProps) => {
           </div>
         </div>
       ) : (
-        <div>
-          <p>Loading issues..</p>
+        <div className="mt-16 text-2xl rounded text-center">
+          <div>🔎 </div>
+          <div>No issues found..</div>
         </div>
       )}
     </>

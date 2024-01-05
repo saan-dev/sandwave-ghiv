@@ -122,7 +122,7 @@ const SearchBar = () => {
         <div className="flex-0">
           <Button
             title="Search"
-            classes="bg-blue-500 hover:bg-blue-700 rounded-md py-2 px-7 cursor-pointer text-center bg-black text-white font-bold"
+            classes="bg-blue-500 active:bg-blue-400 hover:bg-blue-600 rounded-md py-2 px-7 cursor-pointer text-center bg-black text-white font-bold"
           />
         </div>
       </div>
